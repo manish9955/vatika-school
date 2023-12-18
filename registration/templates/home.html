@@ -1,0 +1,295 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+		*{margin:0;padding:0;box-sizing: border-box;}
+
+		h1{padding: 15px 0;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			color:white;
+
+
+		}
+		.star-rating{
+			widows: 100%;
+			height: 100vh;
+			display:flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background: #101820;
+			padding-bottom: 100px;
+			
+		}
+
+		.stars{
+			widows: 400px;
+			height: 100px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			
+
+		}
+		.star{
+			list-style: none;
+			font-size: 3rem;
+			padding-left: 20px;
+			color: white;
+
+		}
+		.star:first-child{
+			padding:0;
+			
+		}
+		.output{
+			background: #00b894;
+			font-size: 2rem;
+			width: 350px;
+			height: 50px;
+			text-align:center;
+			
+			border:2px solid #00b894;
+
+
+
+		}
+		.next{
+			width: 70px;
+			height: 36px;
+		    border-radius: 5px;
+			text-align: center;
+			background: #00b894;
+			font-size: 1rem;
+			outline: none;
+			padding-left: 8px;
+			padding-right: 8px;
+			
+		}
+		.next:hover{
+			color:#00b894;
+			background:black;
+			border: 2px solid #00b894;
+			cursor: pointer;
+
+
+		}
+
+		.orange{
+			color:orange;
+		}
+		.yellow{
+			color:yellow;
+		}
+		a{
+			color: black;
+			height: 65px;
+		    border-radius: 5px;
+			text-align: center;
+			background: #00b894;
+			font-size: 1.8rcap;
+			outline: none;
+			margin-left: 10px;
+			padding-left: 5px;
+			padding-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			text-decoration: none;
+
+			
+		}
+        a:hover{
+        	color:#00b894;
+			background:black;
+			border: 2px solid #00b894;
+			cursor: pointer;
+		}
+		.hero{
+		width: 100%;
+		height: 20vh;
+		background: #00b894;
+		display:flex;
+		justify-content:flex-end;
+	}
+	
+	.card{
+		display: flex;
+		justify-content: space-between;
+		width: 250px;
+		height: 145px;
+		background: #00b894 ;
+		padding: 10px;
+	
+		text-align: center;
+		color: #333;
+	}
+	.card h1{
+		font-weight: 500;
+		color: #000;
+	}
+	.card img{
+		width: 90px;
+		height: 90px;
+		border-radius: 50%;
+		
+	}
+
+
+	label{
+
+display:block;
+width: 100px;
+height: 30px;
+background: #e3362c;
+color: #fff;
+padding-top:5px;
+padding-bottom: 10px;
+margin: 5px auto;
+border-radius: 5px;
+cursor:pointer;
+
+}
+	
+input{
+		display: none;
+	}
+
+
+	
+
+
+	</style>
+<body>
+	<div class="hero">
+    	<div class="card">
+			<div>
+				<h2>Elon Musk</h2>
+				<p>@elonmusk</p>
+				
+				
+			</div>
+    		
+    		
+		 <div class="leve1">
+			<form action="" method="post">
+					{% csrf_token %}
+			 <img src="{% static 'logo/profile-user.png' %}" id="profile-pic" name="profile_img">
+			 <input type="file" accept="image/jpeg, image/png, image/jpg" id='input-file'>
+			 <label  type="submit" for="input-file">update image</label>
+			 </form>
+
+	     </div>
+    		
+  		
+
+
+    	</div>
+  	
+  </div>
+<h1>Rate your favourite picture</h1>
+
+<div class="star-rating">
+	<img src="https://picsum.photos/350/200/?random"/>
+	<ul class="stars">
+		<li class="star"><i class="fa fa-star"></i></li>
+		<li class="star"><i class="fa fa-star"></i></li>
+		<li class="star"><i class="fa fa-star"></i></li>
+		<li class="star"><i class="fa fa-star"></i></li>
+		<li class="star"><i class="fa fa-star"></i></li>
+</ul>
+<p class="output">your rating</p>
+<br>
+<div><button class="next" onclick="next()">Next</button>
+	<a href="/login/">Logout</a>
+</div>
+
+</div>
+
+   
+
+
+   
+  
+
+<script>
+	const stars=document.querySelectorAll('.star');
+	const output=document.querySelector('.output');
+
+for(x=0;x<stars.length;x++){
+	stars[x].starValue =(x+1);
+	
+	//stars[x].addEventListener('click',function(){
+		//console.log('i am clicked')
+	//})
+    ["click","mouseover","mouseout"].forEach(function(e){
+    	stars[x].addEventListener(e,showRating);
+
+    })
+
+}
+function showRating(e){
+	let type =e.type;
+	//console.log(type);
+	let starValue=this.starValue;
+	//console.log(starValue);
+
+	if(type === 'click'){
+		if(starValue>0){
+			output.innerHTML="you rated"+ " "+starValue + " "+ "to this pic"
+		}
+	}
+
+	stars.forEach(function(elem,ind){
+		if(type==='click'){
+			if(ind<starValue){
+				elem.classList.add("orange");
+			}else{
+				elem.classList.remove("orange")
+			}
+
+		}
+
+		if(type==='mouseover'){
+			if(ind<starValue){
+				elem.classList.add("yellow");
+			}else{
+				elem.classList.remove("yellow")
+			}
+
+		}
+		if(type==='mouseout'){
+			
+				elem.classList.remove("yellow")
+			}
+	})
+
+
+
+}
+
+
+function next(){
+	window.location.reload();
+}
+//profile setting
+let profilePic=document.getElementById("profile-pic");
+  	let inputFile=document.getElementById("input-file");
+
+  	inputFile.onchange=function(){
+  		profilePic.src =URL.createObjectURL(inputFile.files[0]);
+
+  	}
+
+
+</script>
+
+
+
+</body>
+</html>

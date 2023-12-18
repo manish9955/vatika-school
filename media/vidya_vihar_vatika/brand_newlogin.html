@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+  <h1>you are in login page.  Welcome!!!</h1>
+  <form  action="" method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="username">user_name</label>
+      <input type="text" class="form-control" name="username">
+  
+
+    
+      <label for="Password">Password</label>
+      <input type="password" name="pass">
+    
+      <p>Don't have account <a href="/register/">Register</a></p>
+
+      <button type="submit">Submit</button>
+
+  </div>
+</form>
+</body>
+</html>

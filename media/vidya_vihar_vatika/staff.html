@@ -1,0 +1,250 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	
+     <title></title>
+
+</head>
+
+<style>
+
+
+	html{
+	   font-size:62.5%;
+     
+	}
+
+	.hero{
+		background:#ff676d ;
+		height: 100vh;
+		width: 100%;
+		position: relative;
+	}
+	
+	.hero h1{
+		text-align: center;
+		padding-top: 8rem;
+		font-size: 4rem;
+		color: #fff;
+	}
+	.slide-row{
+		display:flex;
+		width: 320rem;
+		transition: 0.5s;
+
+
+	}
+	.slide-col{
+		
+		
+		width: 80rem;
+		height: 40rem;
+		position: relative;
+
+	}
+	.user-img{
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+	}
+
+
+	.user-img img{
+		width: 30rem;
+		height: 100%;
+		border-radius: 1rem;
+
+	}
+	.user-text{
+		background: #2d3a59;
+		width: 52rem;
+		height: 27rem;
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		border-radius: 1rem;
+		color: #d3d4d6;
+		padding-top: 4.5rem
+		box-sizing : border-box;
+		z-index : 2;
+
+
+	}
+	.user-text p{
+		font-size: 1.8rem;
+		line-height: 2.4rem;
+		padding-left: 4.0rem;
+		padding-right: 4.0rem;
+
+	}
+	.user-text h3{
+		margin: 4rem 0 .5rem;
+
+		color: #fff;
+		padding-left: 4rem;
+
+	}
+	.container{
+		width: 80rem;
+		height: 40rem;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+	.indicator{
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		bottom: -30%;
+
+	}
+	.btn{
+		display: inline-block;
+		height: 1.5rem;
+		width: 1.5rem;
+		margin: .4rem;
+		border-radius: 1.5rem;
+		background: #fff;
+		cursor: pointer;
+		transition: 0.5s;
+
+
+	}
+	.active{
+		width: 4rem;
+
+	}
+	.testimonials{
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+
+	}
+
+
+@media(max-width:998px){
+	html{
+
+		font-size:55%;
+	}
+}
+
+@media(max-width:768px){
+	html{
+		font-size:40%;
+	}
+}
+h3{
+	font-size: 2rem;
+
+}
+
+</style>
+
+<body>
+	<div class="hero">
+		<h1>Testimonials</h1>
+
+		<div class="container">
+			<div class="indicator">
+				
+				<span class="btn active"></span>
+				<span class="btn"></span>
+				<span class="btn"></span>
+			</div>
+
+			<div class="testimonials">
+
+
+		<div class="slide-row" id="slide">
+			<div class="slide-col">
+				<div class="user-text">
+				    <p>Valentina Nappi is an Italian pornographic film actress and adult model. She has won numerous awards including the 2017 XBIZ Award for the Foreign Female Performer.</p>
+				    <h3>Valentina Nappi</h3>
+				    <p>Pornstar.</p>
+				</div>
+				<div class="user-img">
+					<img src="{% static 'uploads/valentina23.jpg' %}">
+					
+				</div>
+			</div>
+
+			<div class="slide-col">
+				<div class="user-text">
+					<p>Dr.Abhishek is a professional Doctor, poletician and Social worker.He has done Bachelor of Medicine and Bachelor of surgery (MBBS) from Adichunchanagiri Institute of Medical 
+                    Sciences .</p>
+				     <h3>Dr.Abhishek</h3>
+				     <p>Sanjay Gandhi memorial hospital,Delhi.</p>
+				</div>
+				<div class="user-img">
+					<img src="{% static 'uploads/abhishek_new (1).jpg' %}">
+					
+				</div>
+			</div>
+
+			<div class="slide-col">
+				<div class="user-text">
+					<p>Mr.Manish  is an Indian internet entrepreneur , media proprietor and investor.
+					he is a founder of the multi-national
+				technology company MK-advertisers.</p>
+				<h3>Mr.Manish</h3>
+				<p>MK-Advertisers Pvt.Ltd.</p>
+					
+				</div>
+
+				<div class="user-img">
+					<img src="{% static 'uploads/manish.jpeg' %}">
+					
+				</div>
+			</div>
+		</div>
+			
+		</div>
+		</div>
+
+
+
+	</div>
+	
+	<script type="text/javascript">
+		var btn =  document.getElementsByClassName("btn");
+		var slide = document.getElementById("slide");
+		console.log(slide)
+
+		btn[0].onclick = function(){
+			slide.style.transform = "translateX(0px)";
+			for(i=0;i<3;i++){
+				btn[i].classList.remove("active");
+			}
+			this.classList.add("active");
+
+		}
+
+		btn[1].onclick=function(){
+			slide.style.transform="translateX(-80rem)";
+			for(i=0;i<3;i++){
+				btn[i].classList.remove("active");
+			}
+			this.classList.add("active");
+
+			
+		}
+		btn[2].onclick=function(){
+			slide.style.transform="translateX(-160rem)";
+			for(i=0;i<3;i++){
+				btn[i].classList.remove("active");
+			}
+			this.classList.add("active");
+			
+		}
+
+	
+	</script>
+
+</body>
+</html>

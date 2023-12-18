@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	
+  <title></title>
+
+</head>
+<style type="text/css">
+	
+	
+		*{
+			margin:0;
+			padding:0;
+			box-sizing: border-box;
+			font-family: 'poppins',sans-serif;
+
+		}
+		.hero{
+							
+			display: flex;
+			align-items: center;
+			justify-content:center ;
+			position: relative;
+
+			
+		}
+		
+		.back-video{
+			height: 100vh;
+			width: 100vw;
+			object-fit: cover;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: -999;
+			
+
+		}
+		.input-box{
+			background-color:rgba(21,4,4,.3);
+			padding-top: 100px;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-bottom: 100px;
+			border-radius: 5px;
+			margin-top: 100px;
+			
+			
+			
+
+		}
+
+       .input{
+       	 padding:10px;
+       	 font-family: 'poppins','sans-serif';
+       	 font-size: 18px;
+       	 border-radius: 5px;
+       }
+
+       .btn{
+       	margin-top: 10px;
+       	padding:5px;
+       	font-family: 'poppins','sans-serif';
+       	font-size: 16px;
+       	border-radius:5px;
+       }
+
+     .wrapper h1{
+     	color:powderblue;
+		position: absolute;
+		top: 10%;
+	}
+	.register-link a{
+		text-decoration: none;
+		color:rgb(8, 8, 193);
+	}
+	.remember-forgot a{
+		text-decoration: none;
+		color:rgb(8, 8, 193);
+
+	}
+		
+
+</style>
+<body>
+	<div class="hero">
+		<video  width="100%" height="100%" autoplay loop muted plays-inline class='back-video' >
+			<source src="{% static 'videos/pexels-sea.mp4' %}" type="video/mp4">
+		</video>
+		<div class="wrapper">
+			<form action="" method="post">
+                {% csrf_token %}
+				<h1>login</h1>
+				<div class="input-box">
+					<input type="text" placeholder="Username" required class='input' name="username"><br> <br>
+
+					<input type="text" placeholder="Password" required class="input" name="pass"><br><br>
+					<i class='bx bxs-lock-alt'></i>
+				<div class="remember-forgot">
+				  <label><input type="checkbox">Remember me</label>
+				  <a href="#">Forgot password?</a>
+				</div>
+				<button type="submit" class='btn'>Login</button><br><br>
+				<div class="register-link">
+					<p>Don't have account <a href="/register/">Sign Up here</a></p>
+ 
+				</div>
+
+
+				<div>
+					
+				</div>
+			</div>
+		
+	</div>
+
+
+	
+
+</body>
+
+
+
